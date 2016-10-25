@@ -22,7 +22,7 @@ if [ "$teste" == "PONG" ]; then
 
  while true
  do
- echo "Enter key parameters:"
+ echo "Enter key parameters: [type: stop+ENTER when you finish]"
  read parm
  
  if [ "$parm" == "stop" ]; then
@@ -51,5 +51,12 @@ fi
 ######Cassandra transform model######
 if [ "$key" == "3" ]; then
 echo "You choose Cassandra!"
+#testing if cassandra -f is working...
+
+while read linha
+do
+echo $linha
+cqlsh -e "$linha"
+done < cassandra_cmd.txt
 fi
 
