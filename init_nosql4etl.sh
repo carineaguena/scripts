@@ -26,16 +26,17 @@ if [ "$teste" == "PONG" ]; then
  read parm
  
  if [ "$parm" == "stop" ]; then
+  echo "Bye!"
   break
  else
  query=`echo 'keys '$parm | redis-cli | sed 's/^/get /' | redis-cli`
  if [ "$query" == "ERR wrong number of arguments for 'get' command" ]; then
    echo "Key not found!"
  else
-  echo 'keys '$parm | redis-cli | sed 's/^/get /' | redis-cli >> keys.txt
+   #when stop search keys the key_values file is generate
+   echo $parm $query >> key_values
  fi
- fi
- 
+ fi 
  done
 else
  echo "Connection error! Please look your connection redis-cli"
@@ -52,11 +53,10 @@ fi
 if [ "$key" == "3" ]; then
 echo "You choose Cassandra!"
 #testing if cassandra -f is working...
-
-while read linha
-do
-echo $linha
-cqlsh -e "$linha"
-done < cassandra_cmd.txt
+cqlsh -e "select key, host_id, listen_address from system.local;"
 fi
 
+if [ "$key" == "4" ]; then
+echo "You choose Neo4J!"
+
+fi

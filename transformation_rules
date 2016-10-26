@@ -1,0 +1,26 @@
+Key-Value (Redis)
+
+command redis-cli
+keys keys:*
+note: * eh um caracter coringa
+get keys:value
+
+keys key:id "column1: value, column2: value..."
+id = Table name
+column1 = becomes column
+value = row
+
+Document Stores (MongoDB)
+
+Document correspond to table rows
+Document field can be mapped to a table column
+
+Column Family (Cassandra)
+
+CF Column can be mapped to a table column 
+
+Graph Databases (Neo4j)
+
+Import vertices or edges and the attributes can be mapped to columns
+
+(PETTER NASHOLM thesis - extracting data from nosql databases)
