@@ -1,1 +1,0 @@
-select key, host_id, listen_address from system.local;
